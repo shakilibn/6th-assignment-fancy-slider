@@ -50,10 +50,10 @@ img {
   cursor: pointer;
   margin: 0 3px;
 }
-
 .main {
   display: none;
 }
+
 
 @media (max-width: 767px) {
   .justify-content-around.align-items-center.mt-3.gallery-header.mb-2 {
