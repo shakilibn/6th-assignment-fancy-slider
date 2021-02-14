@@ -60,8 +60,7 @@ const selectItem = (event, img) => {
 //function for count selected item. (bonus-round)
 const countItem =() => {
   const showCountItem = document.getElementById('show-count-item');
-  showCountItem.innerHTML=`${sliders.length} item selected`;
-  console.log(sliders.length);
+  showCountItem.innerHTML=`<span class="badge bg-secondary text-white">${sliders.length}</span> item selected`;
 }
 
 var timer
