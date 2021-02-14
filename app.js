@@ -50,12 +50,20 @@ const selectItem = (event, img) => {
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
-  } else {
-    // alert('Hey, Already added !')    
-    sliders.pop(element.src);            // remove from sliders array
+    countItem();
+  } else { 
+    sliders.pop(img);                    // remove from sliders array
     element.classList.remove('added');  //unselect image
+    countItem();
   }
 }
+//function for count selected item. (bonus-round)
+const countItem =() => {
+  const showCountItem = document.getElementById('show-count-item');
+  showCountItem.innerHTML=`${sliders.length} item selected`;
+  console.log(sliders.length);
+}
+
 var timer
 const createSlider = () => {
   // check slider image length
@@ -85,16 +93,11 @@ const createSlider = () => {
     alt="">`;
     sliderContainer.appendChild(item)
   })
-  if (duration > 0) {
     changeSlide(0)
     timer = setInterval(function () {
       slideIndex++;
       changeSlide(slideIndex);
     }, duration);
-  }
-  else {
-    alert('Time cant be negative');
-  }
 }
 
 // change slider index 
@@ -132,7 +135,15 @@ searchBtn.addEventListener('click', function () {
 })
 
 sliderBtn.addEventListener('click', function () {
-  createSlider()
+  const duration = document.getElementById('duration').value || 1000;
+  //condition for slider duration
+  if(duration <= 0){
+    alert('time cant be negative. Please enter valid time');  //if duration is less than 0 or minus number it will give a alert and won't call function
+  }
+  else {
+    createSlider();   
+  }
+  
 })
   //spinner for bonus round
 const toggleSpinner = (show) => {
